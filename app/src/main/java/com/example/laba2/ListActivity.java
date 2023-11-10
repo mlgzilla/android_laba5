@@ -3,6 +3,7 @@ package com.example.laba2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,6 +46,7 @@ public class ListActivity extends AppCompatActivity {
         Button buttonAdd = findViewById(R.id.buttonAdd);
         Button buttonRm = findViewById(R.id.buttonRm);
         EditText editText = findViewById(R.id.editText);
+        Intent settingsIntent = new Intent(this, SettingsActivity.class);
 
 
         ArrayList<String> selectedElements = new ArrayList<>();
@@ -65,15 +68,8 @@ public class ListActivity extends AppCompatActivity {
         buttonLang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (buttonAdd.getText().toString().equals("Add")){
-                    buttonAdd.setText("Добавить");
-                    buttonRm.setText("Удалить");
-                }
-                else {
-                    buttonAdd.setText("Add");
-                    buttonRm.setText("Remove");
-                }
-                TextAdapter.notifyDataSetChanged();
+                    settingsIntent.putExtra("userLogin", userLogin);
+                    startActivity(settingsIntent);
             }
         });
         buttonAdd.setOnClickListener(new View.OnClickListener() {

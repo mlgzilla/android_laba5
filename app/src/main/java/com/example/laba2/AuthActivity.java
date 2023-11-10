@@ -26,7 +26,7 @@ public class AuthActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Integer userId = db.authUser(loginText.getText().toString(), passwdText.getText().toString());
+                Integer userId = db.loginUser(loginText.getText().toString(), passwdText.getText().toString());
                 if (userId != null) {
                     openIntent.putExtra("userLogin", loginText.getText().toString());
                     startActivity(openIntent);
@@ -37,7 +37,7 @@ public class AuthActivity extends AppCompatActivity {
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Integer userId = db.authUser(loginText.getText().toString(), passwdText.getText().toString());
+                Integer userId = db.authUser(loginText.getText().toString());
                 if (userId == null) {
                     User user = new User();
                     user.setLogin(loginText.getText().toString());
